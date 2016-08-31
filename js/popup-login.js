@@ -1,9 +1,10 @@
   var link = document.querySelector(".user-login")
   var popup = document.querySelector(".modal-login")
   var close = popup.querySelector(".modal-close")
-  var login = popup.querySelector("[name=login]")
   var form = popup.querySelector("form")
+  var login = popup.querySelector("[name=login]")
   var password = popup.querySelector("[name=password]")
+  var btnSubmit = popup.querySelector("[type=submit]")
   var storageLogin = localStorage.getItem("login")
 	  
   link.addEventListener("click", function(event) {
@@ -28,10 +29,13 @@
      if (popup.classList.contains("modal-show")) {
        popup.classList.remove("modal-show");
      }
+	 if (popup.classList.contains("modal-error")) {
+       popup.classList.remove("modal-error");
+     }
     }
   });
 	  
-  form.addEventListener("submit", function(event) {
+  btnSubmit.addEventListener("click", function(event) {
     if (!login.value || !password.value) {
       event.preventDefault();
       popup.classList.add("modal-error");
